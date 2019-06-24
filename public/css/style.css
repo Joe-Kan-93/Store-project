@@ -1,0 +1,214 @@
+html,
+body {
+  font-size: 100%;
+  scroll-behavior: smooth;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0;
+  background-color: gray;
+  background-image: url("../css/img/main-bg-img.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  font-family: "Raleway", sans-serif;
+}
+
+/* Homepage */
+
+#landing {
+  height: 80vh;
+}
+
+#jum {
+  width: 50%;
+  margin-top: 10%;
+  background-color: transparent;
+}
+
+a {
+  color: white;
+}
+
+/* #nav-special {
+  padding-left: 75%;
+} */
+
+/* Store's styling */
+
+#bottom h1 {
+  color: white;
+}
+
+#bottom div.scroll {
+  background-color: #fff;
+  margin: 0 auto;
+  padding: 1%;
+  width: 80%;
+  height: 800px;
+  overflow-x: hidden;
+  overflow-x: auto;
+  text-align: justify;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#bottom .card {
+  margin: 0 auto;
+  width: 40%;
+  height: 600px;
+  color: black;
+  background-color: lightgray;
+  /* background-image: url("https://source.unsplash.com/featured/?food"); */
+}
+#bottom .card a {
+  color: black;
+}
+
+/* Login page */
+
+#login-heading {
+  margin: 2% auto;
+}
+
+#login-top,
+#login-bottom {
+  background-color: lightgray;
+  opacity: 0.9;
+  color: black;
+  padding: 1%;
+}
+
+/* Register page */
+
+#register-heading {
+  margin: 2% auto;
+}
+
+#register {
+  height: 100vh;
+  background-color: lightgray;
+  opacity: 0.9;
+  color: black;
+  margin: 1% auto;
+}
+
+/* Add page */
+
+#add-heading {
+  margin: 2% auto;
+}
+
+#add {
+  height: 85vh;
+  background-color: lightgray;
+  opacity: 0.9;
+  color: black;
+  margin: 1% auto;
+}
+
+/* Map page */
+
+#map {
+  height: 100%;
+}
+
+/* Store profile page */
+
+#store-detail {
+  margin-top: 5%;
+  padding: 1%;
+}
+#store-detail .card-body {
+  padding: 0;
+  display: flex;
+}
+#store-detail .card-body :nth-child(1) {
+  flex-basis: 66%;
+}
+#store-detail .card-body :nth-child(2) {
+  padding: 2%;
+  flex-basis: 33%;
+}
+#store-detail .card {
+  background-color: lightblue;
+  color: black;
+  opacity: 0.8;
+}
+#store-detail .card a,
+#store-detail .card small {
+  color: black;
+}
+
+#store-detail img {
+  width: 732px;
+  height: 100%;
+}
+
+/* User profile page */
+
+#user {
+  margin-top: 2%;
+  padding: 1%;
+}
+#user .card-body {
+  display: flex;
+}
+
+#user .card {
+  background-color: lightblue;
+  color: black;
+  opacity: 0.8;
+}
+#user .card a {
+  color: black;
+}
+
+.arrow {
+  margin-top: 5%;
+  padding: 0;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow-down {
+  position: relative;
+  text-align: center;
+  animation: jump 3s infinite;
+  animation: fade 3s ease-in-out 1 0s;
+}
+
+.arrow-down span {
+  width: 20px;
+  height: 20px;
+  display: block;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(45deg);
+  margin: -10px;
+  animation: animateArrow 2s infinite;
+}
+
+.arrow-down span:nth-child(2) {
+  animation-delay: -0.2s;
+}
+
+.arrow-down span:nth-child(3) {
+  animation-delay: -0.4s;
+}
+
+@keyframes animateArrow {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  100% {
+    opacity: 0;
+  }
+}

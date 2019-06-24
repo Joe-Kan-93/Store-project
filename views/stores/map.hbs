@@ -1,0 +1,95 @@
+<div id="map">
+    {{#each mapData}}
+    <div class="card mb-3">
+        <div class="card-body">
+            <p id="str-name" class="card-text">{{route}}</p>
+            <p id="str-num" class="card-text">{{street_number}}</p>
+        </div>
+    </div>
+    {{/each}}
+</div>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    var myLatLng;
+    var latitude, longitude;
+    axios.get('/mapData').then(response => {
+        //console.log(response.data);
+        let mapData = response.data;
+        mapData.map(store => {
+            axios
+                .get("https://maps.googleapis.com/maps/api/geocode/json", {
+                    params: {
+                        address: store,
+                        key: "AIzaSyBPpLmiojA25PuYuA2hXzQKbVCSl1YEkzo"
+                    }
+                })
+                .then(function (response) {
+                    console.log(response.data);
+
+                    var formattedAddress = response.data.results[0].formatted_address;
+                    var location = response.data.results[0].geometry.location;
+                    var latitude = location.lat;
+                    var longitude = location.lng;
+
+                    // console.log(formattedAddress);
+                    // console.log(location);
+                    // console.log(latitude);
+                    // console.log(longitude);
+
+                    //myLatLng = { lat: latitude, lng: longitude };
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        })
+    })
+
+
+
+    // google map function
+    function initMap() {
+        //var map;
+        //map = new google.maps.Map(document.getElementById('map'), {
+        //    center: { lat: -34.397, lng: 150.644 },
+        //    zoom: 8
+        //});
+
+        //var myLatLng = { lat: latitude, lng: longitude };
+        var myLatLng = { lat: 51.21441850000001, lng: 6.7881458 };
+        //var latLng = myLatLng;
+        //console.log(latLng);
+        var map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 2,
+            center: myLatLng,
+            mapTypeId: 'terrain'
+
+        });
+
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(latitude, longitude),
+            map: map,
+            draggable: true,
+            animation: google.maps.Animation.DROP,
+            title: "Marker!"
+            //    title: name
+        });
+        marker.addListener("click", toggleBounce);
+        marker.setMap(map);
+    }
+
+    function toggleBounce() {
+        if (marker.getAnimation() !== null) {
+            marker.setAnimation(null);
+        } else {
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+        }
+    }
+
+</script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPpLmiojA25PuYuA2hXzQKbVCSl1YEkzo&callback=initMap"
+    type="text/javascript"></script>
+
+
+{{!-- marker.setMap(null); --}}

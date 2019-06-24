@@ -1,0 +1,160 @@
+<h1 id="add-heading" class="text-center">Store Form</h1>
+<div id="add" class="container">
+    <form class="container" action="/add/store" method="POST">
+        {{!-- <div class="input-group">
+            <div class="custom-file">
+                <input type="file" name="avatar" class="custom-file-input" id="fileInput">
+                <label class="custom-file-label" for="fileInput">Choose file</label>
+            </div>
+            <div class="input-group-append">
+                <span class="input-group-text" id="">Upload</span>
+            </div>
+        </div> --}}
+
+        <br>
+
+        <div class="form-row">
+            <div class="col-md-12 mb-3">
+                <label for="name">Name: </label>
+                <input type="text" class="form-control" id="name" placeholder="Name" name="name" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-12 mb-3">
+                <label for="email">Email: </label>
+                <input type="text" class="form-control" id="email" placeholder="Email" name="email" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-12 mb-3">
+                <label for="des">Description: </label>
+                <input type="text" class="form-control" id="des" placeholder="Description" name="des" required>
+            </div>
+        </div>
+
+        <div class="form-row" id="address">
+            <h2>Address: </h2>
+
+            <div class="col-md-12 mb-3" id="locationField">
+                <input class="form-control" id="autocomplete" placeholder="Enter your address ..." onFocus="geolocate()"
+                    type="field" />
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="route">Street route: </label>
+                <input type="field" class="form-control" id="route" placeholder="Street route" name="route"
+                    disabled="true">
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="street_number">Street number: </label>
+                <input type="field" class="form-control" id="street_number" placeholder="Street number"
+                    name="street_number" disabled="true">
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="locality">City: </label>
+                <input type="field" class="form-control" id="locality" placeholder="City" name="locality"
+                    disabled="true">
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="administrative_area_level_1">State: </label>
+                <input type="field" class="form-control" id="administrative_area_level_1" placeholder="State"
+                    name="administrative_area_level_1" disabled="true">
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="postal_code">Zip code: </label>
+                <input type="field" class="form-control" id="postal_code" placeholder="Zip code" name="postal_code"
+                    disabled="true">
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="country">Country: </label>
+                <input type="field" class="form-control" id="country" placeholder="Country" name="country"
+                    disabled="true">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-md-12 mb-3">
+                <select class="selectpicker" id="tags" name="tags" multiple data-live-search="true">
+                    <option>Business</option>
+                    <option>Marketing</option>
+                    <option>Freelancer</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                <label class="form-check-label" for="invalidCheck">
+                    Agree to terms and conditions
+                </label>
+            </div>
+        </div>
+        <button id="btn" class="btn btn-primary" type="submit">Create store</button>
+    </form>
+</div>
+
+
+
+
+
+<script>
+    var placeSearch, autocomplete;
+
+    var componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'short_name',
+        country: 'long_name',
+        postal_code: 'short_name'
+    };
+
+    function initAutocomplete() {
+        autocomplete = new google.maps.places.Autocomplete(
+            document.getElementById('autocomplete'), { types: ['geocode'] });
+        autocomplete.setFields(['address_component']);
+        autocomplete.addListener('place_changed', fillInAddress);
+    }
+
+    function fillInAddress() {
+        var place = autocomplete.getPlace();
+
+        for (var component in componentForm) {
+            document.getElementById(component).value = '';
+            document.getElementById(component).disabled = false;
+        }
+
+        for (var i = 0; i < place.address_components.length; i++) {
+            var addressType = place.address_components[i].types[0];
+            if (componentForm[addressType]) {
+                var val = place.address_components[i][componentForm[addressType]];
+                document.getElementById(addressType).value = val;
+            }
+        }
+    }
+
+    function geolocate() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var geolocation = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                var circle = new google.maps.Circle(
+                    { center: geolocation, radius: position.coords.accuracy });
+                autocomplete.setBounds(circle.getBounds());
+            });
+        }
+    }
+</script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPpLmiojA25PuYuA2hXzQKbVCSl1YEkzo&libraries=places&callback=initAutocomplete"
+    async defer></script>

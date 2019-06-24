@@ -1,0 +1,41 @@
+<div id="landing">
+    <div id="jum" class="jumbotron">
+        <h1 class="display-3">Welcome to my website!</h1>
+        <p class="lead">Through my website you can review and see the most famous restaurants in your area.</p>
+        <hr class="my-4">
+        <p>If you want to know more check our page.</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="/about" role="button">Learn more</a>
+        </p>
+    </div>
+
+    <a id="Btn" class="arrow" href="#bottom">
+        <div class="arrow-down">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </a>
+</div>
+
+<div id="bottom">
+    <h1 class="text-center">STORES</h1>
+    <div class="scroll">
+        {{#each store}}
+        <div class="card mb-3">
+            {{!-- <a href="/storeDetail/{{_id}}" class="card-header">{{name}}</a> --}}
+            <a href="/storeDetail/{{name}}" class="card-header">{{name}}</a>
+            <div class="card-body">
+                <h5 class="card-title text-primary">{{email}}</h5>
+            </div>
+            {{!-- <img src="./uploads/{{avatar}}" class="card-img-top" alt="pic"> --}}
+            <img style="height: 200px; width: 100%; display: block;" src="https://source.unsplash.com/featured/?food"
+                alt="Card image">
+            <div class="card-body">
+                <p class="card-text">{{des}}</p>
+                <button class="card-text">{{tags}}</button>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>

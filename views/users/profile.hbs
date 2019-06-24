@@ -1,0 +1,57 @@
+<div id="user" class="container">
+    <div id="cards" class="card-group">
+        <div class="card">
+            <div class="card-body">
+                <div class="p-5 w-50">
+                    {{!-- <img src="" alt=""> --}}
+                    {{!-- <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" name="avatar" class="custom-file-input" id="fileInput">
+                            <label class="custom-file-label" for="fileInput">Choose file</label>
+                        </div>
+                        <div class="input-group-append">
+                            <span class="input-group-text" id="">Upload</span>
+                        </div>
+                    </div> --}}
+
+                    <hr>
+
+                    <h4>Welcome back <span class="text-primary">{{user.firstName}}</span></h4>
+
+                    <hr>
+
+                    <h2 class="text-primary">Personal Details: </h2>
+                    <h4 class="card-text">Username: {{user.username}}</h4>
+                    <h4 class="card-text">Full name: {{user.firstName}} {{user.lastName}}</h4>
+                    <h4 class="card-text">Age: {{user.age}}</h4>
+                    <h4 class="card-text">Email: {{user.email}}</h4>
+                </div>
+                <div class="p-5 w-50">
+                    <h2 class="text-primary">Address: </h2>
+                    <h4 class="card-text">Street route: {{user.route}}</h4>
+                    <h4 class="card-text">Street number: {{user.street_number}}</h4>
+                    <h4 class="card-text">City: {{user.locality}}</h4>
+                    <h4 class="card-text">State: {{user.administrative_area_level_1}}</h4>
+                    <h4 class="card-text">Zip code: {{user.postal_code}}</h4>
+                    <h4 class="card-text">Country: {{user.country}}</h4>
+                    <a href="/map" class="btn btn-primary btn-sm" role="button">On map</a>
+
+                    <hr>
+
+                    <h6 class="card-text">Member since: <small>{{user.registered}}</small></h6>
+
+                    <hr>
+
+                    <p class="lead">
+                        <a href="/" class="btn btn-primary btn-lg" role="button">Go to main</a>
+                    </p>
+                    <p class="lead">
+                        <a href="/update/user/{{user._id}}" class="btn btn-primary btn-lg" role="button">Update</a>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

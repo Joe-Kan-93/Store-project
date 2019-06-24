@@ -1,0 +1,100 @@
+{{#if success_msg}}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>{{success_msg}}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{{/if}}
+
+{{#if error}}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Invalid Data!</strong> Try again.
+    <ul>
+        <li>{{ error }}</li>
+    </ul>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{{/if}}
+
+{{#if error_msg }}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Invalid URL!</strong> Try again.
+    <ul>
+        <li>{{ error_msg }}</li>
+    </ul>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{{/if}}
+
+{{#if info}}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>{{info}}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{{/if}}
+
+
+<h1 id="login-heading" class="text-center">SIGN IN</h1>
+<div class="container" id="login-top">
+    <h3 class="p-3">SIGN IN</h3>
+    <hr>
+    <form class="container" action="/receive" method="POST">
+        <div class="form-row">
+            <div class="col-md-12 mb-3">
+                <label for="username">Username: </label>
+                <input type="text" class="form-control" id="username" placeholder="Username" name="username">
+            </div>
+
+            <div class="col-md-12 mb-3">
+                <label for="password">Password: </label>
+                <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="invalidCheck">
+                <label class="form-check-label" for="invalidCheck">
+                    Stay logged in
+                </label>
+            </div>
+        </div>
+
+        <div>
+            <button class="btn btn-primary" type="submit">Login</button>
+            <a href="/retrieve">Forgot your password</a>
+        </div>
+    </form>
+</div>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<div class="container" id="login-bottom">
+    <h3 class="p-3">Forgot Password</h3>
+    <hr>
+    <form class="container" action="/forgot" method="POST">
+        <div class="form-row">
+            <div class="col-md-12 mb-3">
+                <label for="email">Your Email: </label>
+                <input type="email" class="form-control" id="email" placeholder="Email" name="email">
+            </div>
+        </div>
+
+        <div>
+            <button class="btn btn-primary" type="submit">Reset Password</button>
+        </div>
+    </form>
+</div>

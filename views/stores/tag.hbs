@@ -1,0 +1,103 @@
+<div class="container mt-5">
+    <button class="btn btn-primary p-3">Show all</button>
+    <button class="btn btn-primary p-3" onclick="filterSelection('All')">Business</button>
+    <button class="btn btn-primary p-3">Marketing</button>
+    <button class="btn btn-primary p-3">Freelancer</button>
+</div>
+
+<br>
+<hr>
+<br>
+
+<div id="bottom">
+    <h1 class="text-center">STORES</h1>
+    <div class="scroll">
+        {{#each store}}
+        <div class="card mb-3">
+            {{!-- <a href="/storeDetail/{{_id}}" class="card-header">{{name}}</a> --}}
+            <a href="/storeDetail/{{name}}" class="card-header">{{name}}</a>
+            <div class="card-body">
+                <h5 class="card-title text-primary">{{email}}</h5>
+            </div>
+            {{!-- <img src="./uploads/{{avatar}}" class="card-img-top" alt="pic"> --}}
+            <img style="height: 200px; width: 100%; display: block;" src="https://source.unsplash.com/featured/?food"
+                alt="Card image">
+            <div class="card-body">
+                <p class="card-text">{{des}}</p>
+                <button class="card-text">{{tags}}</button>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+
+
+
+{{!-- <script>
+    filterSelection("all")
+    function filterSelection(c) {
+        var x, i;
+        x = document.getElementsByClassName("filterDiv");
+        if (c == "all") c = "";
+        for (i = 0; i < x.length; i++) {
+            w3RemoveClass(x[i], "show");
+            if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+        }
+    }
+
+    function w3AddClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+            if (arr1.indexOf(arr2[i]) == -1) { element.className += " " + arr2[i]; }
+        }
+    }
+
+    function w3RemoveClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+            while (arr1.indexOf(arr2[i]) > -1) {
+                arr1.splice(arr1.indexOf(arr2[i]), 1);
+            }
+        }
+        element.className = arr1.join(" ");
+    }
+
+    // Add active class to the current button (highlight it)
+    var btnContainer = document.getElementById("myBtnContainer");
+    var btns = btnContainer.getElementsByClassName("btn");
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function () {
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+        });
+    }
+</script> --}}
+
+<script>
+    function filterSelection(c) {
+        var x, i;
+        x = document.getElementsByClassName('span');
+        for (i = 0; i < x.length; i++) {
+            x[i].addEventListener('click', function () {
+                selectionID = this.id;
+                if (selectionID === "test") {
+                    var selectedTag = document.getElementById("test").value
+                    var spans = document.getElementsByClassName('span')[0].getElementsByTagName('p');
+                    for (var i = 0; i < x.length; i++) {
+                        if (selectedTag == "All" || spans[i].innerText == selectedTag) {
+                            spans[i].style.display = "block";
+                        }
+                        else {
+                            spans[i].style.display = "none";
+                        }
+                    }
+                }
+            }, false);
+        }
+    }
+</script>

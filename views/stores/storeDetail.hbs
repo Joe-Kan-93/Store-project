@@ -1,0 +1,48 @@
+<div id="store-detail" class="container">
+    <div id="cards" class="card-group">
+        <div class="card">
+            <div class="card-body d-flex">
+                <div>
+                    <img src="https://source.unsplash.com/featured/?food" alt="pic">
+                </div>
+                <div>
+                    <h2 class="card-text">{{store.name}}</h2>
+                    <h5 class="card-text text-primary">{{store.email}}</h5>
+
+                    <br>
+
+                    <p class="card-text">{{store.des}}</p>
+
+                    <br>
+
+                    <h4 class="text-primary">Address: </h4>
+                    <p class="card-text">{{store.route}} {{store.street_number}}</p>
+                    <p class="card-text">{{store.postal_code}} - {{store.locality}}</p>
+                    <p class="card-text">{{store.administrative_area_level_1}} - {{store.country}}</p>
+
+                    {{!-- <p class="card-text">{{store.latitude}} - {{store.longitude}}</p> --}}
+
+                    <a href="/map" class="btn btn-primary btn-sm" role="button">On map</a>
+
+                    <br>
+                    <br>
+
+                    <a class="card-text"><small>{{store.tags}}</small>
+                    </a>
+
+                    {{!-- <h6 class="card-text"><small class="text-muted">{{store.updated}}</small></h6> --}}
+
+                    {{#if login}}
+                    <p class="lead pt-5">
+                        <a href="/" class="btn btn-primary btn-lg" role="button">Back to main</a>
+                    </p>
+                    {{else}}
+                    <p class="lead pt-5">
+                        <a href="/" class="btn btn-primary btn-lg" role="button">Back to main</a>
+                    </p>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
