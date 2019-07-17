@@ -1,2 +1,0 @@
-npm install -D nodemon
-npm run dev
