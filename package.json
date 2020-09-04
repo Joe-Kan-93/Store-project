@@ -38,7 +38,7 @@
     "passport-local-mongoose-email": "^0.1.4"
   },
   "devDependencies": {
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "nodemon": "^1.19.1"
   }
 }
